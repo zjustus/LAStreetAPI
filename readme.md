@@ -8,5 +8,8 @@ https://github.com/elainelin313/LAstreet
 
 
 # Endpoints
-- '/feature' - gets a feature
-    parameter: id
+- `/` - Heartbeat, checks if server is running. 
+- `/filterFeatures` - Returns a list of features that can be filtered
+- `/feature` - gets a feature
+    parameter: id - the ID of an object
+- `/findFeatures` - returns a list of features given list of filters
