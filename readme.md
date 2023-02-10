@@ -3,7 +3,7 @@ This NodeJS application is designed to be the backend for the LA Street Applicat
 https://github.com/elainelin313/LAstreet
 
 # How to Run
-`npm init`: Installs the packages
+`npm install`: Installs the packages
 `npm start`: Starts the server
 
 
@@ -13,3 +13,4 @@ https://github.com/elainelin313/LAstreet
 - `/feature` - gets a feature
     parameter: id - the ID of an object
 - `/findFeatures` - returns a list of features given list of filters
+    parameters: get a list of parameters from the `/filterFeatures` endpoint
