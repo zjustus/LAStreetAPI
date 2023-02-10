@@ -52,24 +52,17 @@ app.get('/feature', (req, res) =>{
 app.get('/findFeatures', (req, res) =>{
   let output;
 
-  console.log("FindFeatures Endpoint called")
   const params = req.query;
   const paramKeys = Object.keys(params)
   const featureKeys = Object.keys(streetData['features'][0]['properties'])
-  
-  
 
   output = streetData['features']
 
-  console.log("FindFeatures Initialized")
-
   let numOfFilters = 0
   for(const i of paramKeys){
-    console.log(i)
     if(!featureKeys.includes(i)) continue;
 
     numOfFilters ++
-    console.log(`Filtering ${i}`)
     output = output.filter(feature => {
       if(typeof feature['properties'][i] === 'string'){
         return feature['properties'][i] === params[i]
