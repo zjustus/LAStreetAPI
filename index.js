@@ -35,7 +35,7 @@ app.get('/feature', (req, res) =>{
   const params = req.query;
 
   output = streetData["features"].find(o => o['properties']["SECT_ID"] == params.id);
-  console.log(output)
+  // console.log(output)
   console.log(streetData['features'][1])
 
   // TODO: If error, send error!
@@ -47,17 +47,42 @@ app.get('/feature', (req, res) =>{
 app.get('/findFeatures', (req, res) =>{
   let output;
 
+  console.log("FindFeatures Endpoint called")
   const params = req.query;
-  const ParamKeys = Object.keys(params)
+  const paramKeys = Object.keys(params)
   const featureKeys = Object.keys(streetData['features'][0]['properties'])
   
+  
+
   output = streetData['features']
-  for(let i in ParamKeys){
+
+  console.log("FindFeatures Initialized")
+
+  let numOfFilters = 0
+  for(const i of paramKeys){
+    console.log(i)
     if(!featureKeys.includes(i)) continue;
 
+    numOfFilters ++
+    console.log(`Filtering ${i}`)
     output = output.filter(feature => {
-      return false;
+      if(typeof feature['properties'][i] === 'string'){
+        return feature['properties'][i] === params[i]
+      }
+      else if(typeof feature['properties'][i] === 'number'){
+        return feature['properties'][i] <= params[i]
+      }
     })
+
+    if(numOfFilters == 0){
+      // TODO: If error, send error!
+      res.send({
+        "Error":"ID Not Found"
+      })
+      return
+    }
+
+    res.send(output)
 
   }
 
