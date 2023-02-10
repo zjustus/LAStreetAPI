@@ -21,9 +21,14 @@ app.get('/', (req, res) => {
 
 // Gets a list of features that can be filtered. 
 app.get('/filterFeatures', (req, res) =>{
-  let output;
+  let output = {};
 
-  output = Object.keys(streetData['features'][0]['properties'])
+  const featureKeys = Object.keys(streetData['features'][0]['properties'])
+
+  for(i of featureKeys){
+    output[i] = typeof streetData['features'][0]['properties'][i]
+  }
+
   res.send(output)
 })
 
