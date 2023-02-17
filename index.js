@@ -5,7 +5,7 @@ const app = express()
 const port = 3001
  
 let streetData;
-Fs.readFile("./lacounty.geojson").then((data)=>{
+Fs.readFile("./hillside_inventory_LA_centrality_full.geojson").then((data)=>{
   const geoJson = data;
   streetData = JSON.parse(geoJson);
 });
