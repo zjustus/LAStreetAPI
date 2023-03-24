@@ -1,14 +1,20 @@
 const express = require('express')
+const cors = require('cors')
 const Fs = require('fs/promises')
 
 const app = express()
 const port = 3001
  
+
+// Set App Data
 let streetData;
 Fs.readFile("./hillside_inventory_LA_centrality_full.geojson").then((data)=>{
   const geoJson = data;
   streetData = JSON.parse(geoJson);
 });
+
+// Set Cors headers
+app.use(cors({origin:'*'}))
 
 // Dummy Test
 app.get('/', (req, res) => {
