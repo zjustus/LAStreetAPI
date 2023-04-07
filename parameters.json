@@ -92,7 +92,6 @@
             "South Los Angeles": "southla"
         }
     },
-    
     "council": {
         "name": "Select Council",
         "type": "select",
