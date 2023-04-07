@@ -1,43 +1,60 @@
 const express = require('express')
 const cors = require('cors')
 const Fs = require('fs/promises')
+const {glob, globSync} = require("glob")
+// const { filter } = require('./filters/width_rating')
 
 const app = express()
 const port = 3001
- 
 
-// Set App Data
+// Get App Data
 let streetData;
-Fs.readFile("./hillside_inventory_LA_centrality_full.geojson").then((data)=>{
+Fs.readFile("./data/hillside_inventory_LA_centrality_full.geojson").then((data)=>{
   const geoJson = data;
   streetData = JSON.parse(geoJson);
 });
 
+// Load Filters dynamically
+let filters = []
+globSync('./filters/*.js').forEach(file => {
+  const filter = require(`./${file}`);
+  filters.push(filter);
+})
+
 // Set Cors headers
 app.use(cors({origin:'*'}))
 
-// Dummy Test
-app.get('/', (req, res) => {
-//   res.send('Hello World!')
+// Heartbeat
+app.get('/heartbeat', (req, res) => {
     let dummy = {
-        "Hello":"Json Has Returned"
+        "Status":200
     };
     res.send(dummy);
 })
 
 // Gets a list of features that can be filtered. 
-app.get('/filterFeatures', (req, res) =>{
-  let output = {};
-
-  const featureKeys = Object.keys(streetData['features'][0]['properties'])
-
-  for(i of featureKeys){
-    output[i] = typeof streetData['features'][0]['properties'][i]
-  }
-
+app.get('/filters', async (req, res) =>{
+  let output = await Fs.readFile("./parameters.json");
+  output = JSON.parse(output);
   res.send(output)
 })
 
+// Gets Filtered Data
+app.get('/filteredData', async (req, res) =>{
+  let geoData = streetData.features;
+  console.log("Running Filters");
+  
+  filters
+  .sort((a,b) => {a.priority - b.priority}) // Sort by priority
+  .forEach(filter =>{ // Loop Through the filters
+    geoData = filter.filter(geoData, req.query);
+  })
+
+  res.send("Success");
+});
+
+
+// This is deprecated
 // Gets feature details by ID
 app.get('/feature', (req, res) =>{
   let output;
@@ -55,6 +72,8 @@ app.get('/feature', (req, res) =>{
   })
 })
 
+
+// This is deprecated
 app.get('/findFeatures', (req, res) =>{
   let output;
 
@@ -92,6 +111,7 @@ app.get('/findFeatures', (req, res) =>{
 
 })
 
+// Start the Application
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`)
 })
