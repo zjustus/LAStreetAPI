@@ -1,0 +1,139 @@
+{
+    "widthRW":{
+        "name":"Width Rating Weight",
+        "type": "number",
+        "min": 0,
+        "max": 1,
+        "default":0.33
+    },
+    "pciRW":{
+        "name":"PCI Rating Weight",
+        "type": "number",
+        "min": 0,
+        "max": 1,
+        "default":0.33
+    },
+    "curbRW":{
+        "name":"Curb Rating Weight",
+        "type": "number",
+        "min": 0,
+        "max": 1,
+        "default":0.26
+    },
+    "sidewalkRW":{
+        "name":"Sidewalk Rating Weight",
+        "type": "number",
+        "min": 0,
+        "max": 1,
+        "default":0.07
+    },
+    "distanceW":{
+        "name":"Importance Distance Weight",
+        "type": "number",
+        "min": 0,
+        "max": 1,
+        "default":0.25
+    },
+    "populationW":{
+        "name":"Importance Population Weight",
+        "type": "number",
+        "min": 0,
+        "max": 1,
+        "default":0.25
+    },
+    "timeW":{
+        "name":"Importance Time Weight",
+        "type": "number",
+        "min": 0,
+        "max": 1,
+        "default":0.25
+    },
+    "widthW":{
+        "name":"Importance Width Weight",
+        "type": "number",
+        "min": 0,
+        "max": 1,
+        "default":0.25
+    },
+    "community": {
+        "name": "Select Community ",
+        "type": "select",
+        "options:":{
+            "Non disadvantage Community": "nondisadvantage",
+            "Disadvantage Community": "disadvantage",
+            "Low Income": "lowincome"
+        }
+    },
+    
+    "withdrawn": {
+        "name": "Select Withdrawn",
+        "type": "select",
+        "options:":{
+            "Withdrawn": "withdrawn",
+            "Not Withdrawn": "notwithdrawn"
+        }
+    },
+    
+    "maintain": {
+        "name": "Select Maintain",
+        "type": "select",
+        "options:":{
+            "Maintained": "maintain",
+            "Not Maintained": "notmaintain"
+        }
+    },
+    
+    "location": {
+        "name": "Select Location",
+        "type": "select",
+        "options:":{
+            "North Los Angeles": "northla",
+            "Central Los Angeles": "centralla",
+            "South Los Angeles": "southla"
+        }
+    },
+    
+    "council": {
+        "name": "Select Council",
+        "type": "select",
+        "options:":{
+            "1": 1,
+            "2": 2,
+            "3": 3,
+            "4": 4,
+            "5": 5,
+            "6": 6,
+            "7": 7,
+            "11": 11,
+            "12": 12,
+            "13": 13,
+            "14": 14,
+            "15": 15
+        }
+    },
+    "designation": {
+        "name": "Select Designation",
+        "type": "select",
+        "options:":{
+            "Avenue I ": "Avenue I",
+            "Avenue II ": "Avenue II",
+            "Avenue III ": "Avenue III",
+            "Boulevard I ": "Boulevard I",
+            "Boulevard II ": "Boulevard II",
+            "Collector ": "Collector",
+            "Hillside Collector ": "Hillside Collector",
+            "Local Street - Standard ": "Local Street - Standard",
+            "Modified Avenue I ": "Modified Avenue I",
+            "Modified Avenue II ": "Modified Avenue II",
+            "Modified Avenue III ": "Modified Avenue III",
+            "Modified Boulevard II ": "Modified Boulevard II",
+            "Modified Collector ": "Modified Collector",
+            "Modified Local Street Standard ": "Modified Local Street Standard",
+            "Modified Scenic Arterial Mountain ": "Modified Scenic Arterial Mountain",
+            "Mountain Collector ": "Mountain Collector",
+            "Private ": "Private",
+            "Scenic Parkway ": "Scenic Parkway",
+            "Unidentified ": "Unidentified"
+        }
+    }
+}
