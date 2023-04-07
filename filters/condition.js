@@ -33,12 +33,12 @@ function filter(data, parameters){
             let newFeature = feature;        
     
             let condition = 0;
-            condition += newFeature['width_rating'] * parameters['widthRW'];
-            condition += newFeature['pci_rating'] * parameters['pciRW'];
-            condition += newFeature['curb_rating'] * parameters['curbRW'];
-            condition += newFeature['sidewalk_rating'] * parameters['sidewalkRW'];
+            condition += newFeature.properties['width_rating'] * parameters['widthRW'];
+            condition += newFeature.properties['pci_rating'] * parameters['pciRW'];
+            condition += newFeature.properties['curb_rating'] * parameters['curbRW'];
+            condition += newFeature.properties['sidewalk_rating'] * parameters['sidewalkRW'];
             condition /= sumUserInput
-            newFeature['condition'] = condition;
+            newFeature.properties['condition'] = condition;
             
             output.push(newFeature)
         }

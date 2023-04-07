@@ -50,7 +50,7 @@ app.get('/filteredData', async (req, res) =>{
     geoData = filter.filter(geoData, req.query);
   })
 
-  res.send("Success");
+  res.send(geoData);
 });
 
 

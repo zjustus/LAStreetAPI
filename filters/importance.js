@@ -20,11 +20,11 @@ function filter(data, parameters){
             let newFeature = feature;      
             
             let importance = 0
-            importance += newFeature['centrality_distance'] * parameters['distanceW'];
-            importance += newFeature['centrality_time'] * parameters['timeW'];
-            importance += newFeature['centrality_width'] * parameters['widthW']; 
-            importance += newFeature['centrality_population'] * parameters['populationW'];
-            newFeature['importance'] = importance;  
+            importance += newFeature.properties['centrality_distance'] * parameters['distanceW'];
+            importance += newFeature.properties['centrality_time'] * parameters['timeW'];
+            importance += newFeature.properties['centrality_width'] * parameters['widthW']; 
+            importance += newFeature.properties['centrality_population'] * parameters['populationW'];
+            newFeature.properties['importance'] = importance;  
             
             output.push(newFeature)
         }
