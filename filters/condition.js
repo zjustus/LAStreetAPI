@@ -22,22 +22,29 @@ function filter(data, parameters){
         !('sidewalkRW' in parameters)
     ) return data
 
-    let sumUserInput = 
-        parameters['widthRW'] + 
-        parameters['pciRW'] + 
-        parameters['curbRW'] + 
-        parameters['sidewalkRW'];
+    const widthRW = Number(parameters['widthRW']);
+    const pciRW = Number(parameters['pciRW']);
+    const curbRW = Number(parameters['curbRW']);
+    const sidewalkRW = Number(parameters['sidewalkRW']);
 
+
+    let sumUserInput = 
+        widthRW +
+        pciRW +
+        curbRW +
+        sidewalkRW;
+
+        
     try{
         for(const feature of data){
             let newFeature = feature;        
     
             let condition = 0;
-            condition += newFeature.properties['width_rating'] * parameters['widthRW'];
-            condition += newFeature.properties['pci_rating'] * parameters['pciRW'];
-            condition += newFeature.properties['curb_rating'] * parameters['curbRW'];
-            condition += newFeature.properties['sidewalk_rating'] * parameters['sidewalkRW'];
-            condition /= sumUserInput
+            condition += newFeature.properties['width_rating'] * widthRW;
+            condition += newFeature.properties['pci_rating'] * pciRW;
+            condition += newFeature.properties['curb_rating'] * curbRW;
+            condition += newFeature.properties['sidewalk_rating'] * sidewalkRW;
+            condition /= sumUserInput;
             newFeature.properties['condition'] = condition;
             
             output.push(newFeature)
