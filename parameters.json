@@ -58,7 +58,7 @@
     "community": {
         "name": "Select Community ",
         "type": "select",
-        "options:":{
+        "options":{
             "Non disadvantage Community": "nondisadvantage",
             "Disadvantage Community": "disadvantage",
             "Low Income": "lowincome"
@@ -68,7 +68,7 @@
     "withdrawn": {
         "name": "Select Withdrawn",
         "type": "select",
-        "options:":{
+        "options":{
             "Withdrawn": "withdrawn",
             "Not Withdrawn": "notwithdrawn"
         }
@@ -77,7 +77,7 @@
     "maintain": {
         "name": "Select Maintain",
         "type": "select",
-        "options:":{
+        "options":{
             "Maintained": "maintain",
             "Not Maintained": "notmaintain"
         }
@@ -86,7 +86,7 @@
     "location": {
         "name": "Select Location",
         "type": "select",
-        "options:":{
+        "options":{
             "North Los Angeles": "northla",
             "Central Los Angeles": "centralla",
             "South Los Angeles": "southla"
@@ -95,7 +95,7 @@
     "council": {
         "name": "Select Council",
         "type": "select",
-        "options:":{
+        "options":{
             "1": 1,
             "2": 2,
             "3": 3,
@@ -113,7 +113,7 @@
     "designation": {
         "name": "Select Designation",
         "type": "select",
-        "options:":{
+        "options":{
             "Avenue I ": "Avenue I",
             "Avenue II ": "Avenue II",
             "Avenue III ": "Avenue III",
